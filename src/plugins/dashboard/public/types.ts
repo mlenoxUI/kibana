@@ -76,6 +76,24 @@ export interface DashboardState {
 
 /**
  * RawDashboardState is the dashboard state as directly loaded from the panelJSON
+ * 
+ * export interface DashboardContainerInput extends ContainerInput {
+  viewMode: ViewMode;
+  filters: Filter[];
+  query: Query;
+  timeRange: TimeRange;
+  refreshConfig?: RefreshInterval;
+  expandedPanelId?: string;
+  useMargins: boolean;
+  title: string;
+  description?: string;
+  isEmbeddedExternally?: boolean;
+  isFullScreenMode: boolean;
+  panels: {
+    [panelId: string]: DashboardPanelState<EmbeddableInput & { [k: string]: unknown }>;
+  };
+  isEmptyState?: boolean;
+}
  */
 export type RawDashboardState = Omit<DashboardState, 'panels'> & { panels: SavedDashboardPanel[] };
 

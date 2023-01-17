@@ -1,14 +1,42 @@
-# For more configuration options see the configuration guide for Kibana in
-# https://www.elastic.co/guide/index.html
+elasticsearch:
+  hosts:
+  - https://elasticsearch2.moondragon.lan
+  serviceAccountToken: AAEAAWVsYXN0aWMva2liYW5hL25ldy1lbGFzdGljX21kay1tYW5nb184MGUxYzJmZS04MDZkLTQwYzEtOTlkNS00NWI0NmM5MzQ4M2U6WHh3akJSTkxZa1A2NlBoQXg5bFRPbjF3RWF4a2NidXVZbFVzWWhNeXdDcDFEMzdwa1B5MGdVdTFrbUd1bkFiMQ==
+  ssl:
+    certificateAuthorities: config/ca.crt
+    verificationMode: none
+monitoring:
+  ui:
+    container:
+      elasticsearch:
+        enabled: true
+server:
+  host: 0.0.0.0
+  name: mdk-mango
+  ssl:
+    certificate: config/tls.crt
+    enabled: true
+    key: config/tls.key
+xpack:
+  encryptedSavedObjects:
+    encryptionKey: cyL4KloRSXIxaz3z2XlkRU6qysXuJbwdPMh6PvNSrp85XKHx37Lqww7OoKldrJVW
+  license_management:
+    ui:
+      enabled: false
+  monitoring:
+    collection:
+      enabled: true
+    ui:
+      container:
+        elasticsearch:
+          enabled: true
+  reporting:
+    encryptionKey: LLf0bFdlpHApcIp3OfzSsSA211lFKUIAu88yYoUaw3HUartLwdqx84YUGVsDxmly
+  security:
+    encryptionKey: jhP1oVauSyT9ZePnYqdpumTXRsnuNkjct9J9WRf1wPgS6I3KEXwkZCec0UlIE7X1
 
-# =================== System: Kibana Server ===================
-# Kibana is served by a back end server. This setting specifies the port to use.
-#server.port: 5601
 
-# Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.
-# The default is 'localhost', which usually means remote machines will not be able to connect.
-# To allow connections from remote users, set this parameter to a non-loopback address.
-#server.host: "localhost"
+
 
 # Enables you to specify a path to mount Kibana at if you are running behind a proxy.
 # Use the `server.rewriteBasePath` setting to tell Kibana if it should remove the basePath
